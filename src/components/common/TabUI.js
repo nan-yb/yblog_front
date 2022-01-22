@@ -7,7 +7,7 @@ function classNames(...classes) {
 }
 
 const TabUI = ({ prop }) => {
-  if (prop.length === 0) return <div>123</div>;
+  if (prop.length === 0) return <div>비어잇음</div>;
 
   const boardList = prop;
   const articleList = prop[0].content;
