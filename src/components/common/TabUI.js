@@ -12,7 +12,7 @@ const TabUI = ({ prop }) => {
   const boardList = prop;
   const articleList = prop[0].content;
 
-  if (!articleList) return <div>비어있음 z</div>;
+  if (!articleList) return <div>비어있음</div>;
 
   return (
     <div className="max-w-md px-2 py-16 sm:px-0 w-72">
