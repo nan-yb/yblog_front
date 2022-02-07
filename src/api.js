@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://sub.ybyblog.com",
+  baseURL: "https://sub.ybyblog.com",
   timeout: 1000,
   // 해커 뉴스 API는 커스텀 헤더 넣으면 CORS걸려서 주석처리했습니다.
   // headers: {'X-Custom-Header': 'foobar'}
