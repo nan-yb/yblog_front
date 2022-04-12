@@ -1,7 +1,7 @@
 // import { useDispatch } from "react-redux";
 import axios from "../../api";
 import { useState, useEffect } from "react";
-import { setLoginModalClose } from "../../store/modal";
+import { setLoginModalClose } from "../../modules/modal";
 
 // import { Listbox, Transition } from "@headlessui/react";
 // import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";

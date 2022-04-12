@@ -2,8 +2,8 @@ import { useDispatch } from "react-redux";
 import {
   setLoginModalDirectRegister,
   setLoginModalClose,
-} from "../../store/modal";
-import { setUser } from "../../store/user";
+} from "../../modules/modal";
+import { setUser } from "../../modules/common";
 import axios from "../../api";
 import React, { useState } from "react";
 
@@ -41,6 +41,9 @@ const Login = () => {
         password: inputs.password,
       },
     });
+
+    console.log(data);
+
     // 로그인 에러 캐칭
     if (data.error) {
       alert(data.msg);

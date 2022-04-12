@@ -9,20 +9,36 @@ import "./assets/modal.scss";
 import App from "./App";
 
 //redux
-import { createStore } from "redux";
-import rootReducer from "./store";
+import { createStore, applyMiddleware } from "redux";
+import createSagaMiddleware from "redux-saga";
 import { Provider } from "react-redux";
+import logger from "redux-logger";
+import { BrowserRouter } from "react-router-dom"; // * BrowserRouter 불러오기
+import Gnb from "./components/Gnb";
+import { composeWithDevTools } from "redux-devtools-extension";
+import rootRefactReducer, { rootSaga } from "./modules";
+// const store = createStore(
+//   rootReducer,
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// ); // 스토어를 만듭니다.
+
+const sagaMiddleware = createSagaMiddleware({});
 
 const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-); // 스토어를 만듭니다.
+  rootRefactReducer,
+  composeWithDevTools(applyMiddleware(sagaMiddleware, logger))
+);
+
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <Gnb />
+        <App />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

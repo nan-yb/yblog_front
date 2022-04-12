@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import styles from "../assets/gnb.scss";
 import { useSelector, useDispatch, shallowEqual } from "react-redux";
-import { setLoginModalOpen } from "../store/modal";
-import { setUser } from "../store/user";
+import { setLoginModalOpen } from "../modules/modal";
+import { setUser } from "../modules/common";
 
 import LoginAndRegister from "../components/Modal/LoginAndRegister";
 
