@@ -14,9 +14,6 @@ button {
 picture {
   width: 100%;
   max-width: 450px;
-  & > img {
-    max-width: inherit;
-  }
 }
 
 .modalOutside {
@@ -63,13 +60,4 @@ picture {
   }
 }
 
-.confirmModal {
-  width: 320px;
-  padding: 24px;
-  background: white;
-  .btnContainer {
-    display: flex;
-    margin-top: 30px;
-    justify-content: end;
-  }
-}
+

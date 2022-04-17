@@ -1,40 +1,8 @@
-import { useParams } from "react-router-dom";
-import axios from "../api";
 import { Viewer } from "@toast-ui/react-editor";
-import { useEffect, useState } from "react";
 import Moment from "react-moment";
 import "../assets/board.scss";
 
-const Article = () => {
-  const params = useParams();
-  const [article, setArticle] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  // const editorRef = useRef();
-  const fetchArticles = async () => {
-    try {
-      // 요청 처음에 초기화
-      setArticle(null);
-      setLoading(true);
-
-      const data = await axios({
-        url: `/article/${params.article}`,
-        method: "get",
-      });
-
-      setArticle(data.article);
-    } catch (e) {}
-
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    fetchArticles();
-  }, []);
-
-  if (loading) return <div>로딩중..</div>;
-  if (!article) return null;
-
+const Article = ({ article }) => {
   return (
     <div>
       <div className="mx-auto my-4 max-w-screen-xl">

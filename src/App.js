@@ -8,7 +8,7 @@ import { Routes, Route } from "react-router-dom"; // * BrowserRouter 불러오�
 import Home from "./components/Home";
 import Admin from "./components/Admin";
 import Write from "./components/Write";
-import Article from "./components/Article";
+import ArticlePage from "./pages/ArticlePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,8 +43,8 @@ function App() {
       <Route path="write" element={<Write />} />
       <Route path="admin" element={<Admin />} />
 
-      <Route path="article" element={<Article />}>
-        <Route path=":article" element={<Article />} />
+      <Route path="article" element={<ArticlePage />}>
+        <Route path=":article" element={<ArticlePage />} />
       </Route>
     </Routes>
   );

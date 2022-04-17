@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import "./index.css";
 import "./assets/gnb.scss";
-// import "./assets/global.scss";
+import "./assets/global.scss";
 import "./assets/modal.scss";
 
 import App from "./App";
