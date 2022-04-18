@@ -21,7 +21,7 @@ const ArticleContainer = ({ articleId }) => {
 
   return (
     <>
-      <Article article={data} />{" "}
+      <Article article={data.article} comment={data.comment} />{" "}
     </>
   );
 };

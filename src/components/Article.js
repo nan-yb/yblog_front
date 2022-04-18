@@ -2,7 +2,10 @@ import { Viewer } from "@toast-ui/react-editor";
 import Moment from "react-moment";
 import "../assets/board.scss";
 
-const Article = ({ article }) => {
+const Article = ({ article, comment }) => {
+  console.log(article);
+  console.log(comment);
+
   return (
     <div>
       <div className="mx-auto my-4 max-w-screen-xl">
