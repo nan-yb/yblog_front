@@ -6,6 +6,12 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+function tagRemove(txt) {
+  const extractTextPattern = /(<([^>]+)>)/gi;
+  let text = txt.replace(extractTextPattern, "");
+  return text;
+}
+
 const TabUI = ({ prop }) => {
   if (prop.length === 0) return <div>비어있음 배포테스트입니다.</div>;
 
@@ -61,7 +67,7 @@ const TabUI = ({ prop }) => {
                         {article.title}
                       </div>
                       <p className="text-gray-700 text-base">
-                        {article.content}
+                        {tagRemove(article.content)}
                       </p>
                     </div>
                     <div className="pt-4 ">

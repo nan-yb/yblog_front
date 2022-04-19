@@ -15,11 +15,15 @@ function CustomButton(props) {
   if (props.div === "red") {
     return (
       <div>
-        <RedButton>{title}</RedButton>
+        <RedButton onClick={props.clickFn}>{title}</RedButton>
       </div>
     );
   } else {
-    return <BlueButton>{title}</BlueButton>;
+    return (
+      <div>
+        <BlueButton onClick={props.clickFn}>{title}</BlueButton>
+      </div>
+    );
   }
 }
 

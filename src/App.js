@@ -6,7 +6,7 @@ import { setUser } from "./modules/common";
 import { Routes, Route } from "react-router-dom"; // * BrowserRouter 불러오기
 //componenet
 import Home from "./components/Home";
-import Admin from "./components/Admin";
+import Admin from "./components/admin/Admin";
 import Write from "./components/Write";
 import ArticlePage from "./pages/ArticlePage";
 

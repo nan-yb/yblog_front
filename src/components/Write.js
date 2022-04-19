@@ -6,7 +6,7 @@ import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
 
 import "tui-color-picker/dist/tui-color-picker.css";
-import Confirm from "./Modal/Confirm";
+import Confirm from "./modal/Confirm";
 
 import axios from "../api";
 import { useNavigate } from "react-router-dom";
@@ -264,13 +264,13 @@ const Write = () => {
 
         <div className="mx-auto x-full py-10 justify-end flex">
           <CustomButton
-            onClick={cancleArticle}
+            clickFn={cancleArticle}
             div="red"
             title="취소"
           ></CustomButton>
 
           <CustomButton
-            onClick={uploadArticle}
+            clickFn={uploadArticle}
             div="blue"
             title="작성"
           ></CustomButton>
