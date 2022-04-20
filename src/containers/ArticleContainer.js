@@ -10,6 +10,10 @@ const ArticleContainer = ({ articleId }) => {
     reducerUtils.initial(); // 아예 데이터가 존재하지 않을 때가 있으므로, 비구조화 할당이 오류나지 않도록
   const dispatch = useDispatch();
 
+  const { user } = useSelector((state) => ({
+    user: state.user,
+  }));
+
   useEffect(() => {
     if (data) return;
     dispatch(getArticle(articleId));
@@ -21,7 +25,7 @@ const ArticleContainer = ({ articleId }) => {
 
   return (
     <>
-      <Article article={data.article} comment={data.comment} />{" "}
+      <Article article={data.article} comment={data.comment} user={user} />{" "}
     </>
   );
 };
