@@ -3,15 +3,8 @@ import { Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/auth/SignInPage";
 import AdminSetupPage from "./pages/member/AdminSetupPage";
-import CodeGroupListPage from "./pages/codegroup/CodeGroupListPage";
-import CodeGroupRegisterPage from "./pages/codegroup/CodeGroupRegisterPage";
-import CodeGroupModifyPage from "./pages/codegroup/CodeGroupModifyPage";
-import CodeGroupReadPage from "./pages/codegroup/CodeGroupReadPage";
-import CodeDetailListPage from "./pages/codedetail/CodeDetailListPage";
-import CodeDetailRegisterPage from "./pages/codedetail/CodeDetailRegisterPage";
-import CodeDetailModifyPage from "./pages/codedetail/CodeDetailModifyPage";
-import CodeDetailReadPage from "./pages/codedetail/CodeDetailReadPage";
 import SignUpPage from './pages/auth/SignUpPage';
+import WritePage from '@pages/WritePage';
 
 export interface LoginInput {
   userId: string;
@@ -65,7 +58,11 @@ function App() {
       <Route component={SignInPage} path="/signin" exact />
       <Route component={SignUpPage} path="/signup" exact />
 
-      <Route component={AdminSetupPage} path="/member/setup" />
+      <Route component={WritePage} path="/write" exact />
+      <Route component={AdminSetupPage} path="/admin" exact />
+
+
+      {/* <Route component={AdminSetupPage} path="/member/setup" />
       
       <Route component={CodeGroupListPage} path="/codegroup" exact />
       <Route component={CodeGroupRegisterPage} path="/codegroup/create" />
@@ -75,7 +72,7 @@ function App() {
       <Route component={CodeDetailListPage} path="/codedetail" exact />
       <Route component={CodeDetailRegisterPage} path="/codedetail/create" />
       <Route component={CodeDetailModifyPage} path="/codedetail/edit/:groupCode/:codeValue" />
-      <Route component={CodeDetailReadPage} path="/codedetail/read/:groupCode/:codeValue" />
+      <Route component={CodeDetailReadPage} path="/codedetail/read/:groupCode/:codeValue" /> */}
     </>
   );
 }

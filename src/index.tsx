@@ -9,10 +9,9 @@ import { Provider } from "react-redux";
 import rootReducer, { rootSaga } from "./modules";
 import { composeWithDevTools } from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga";
-// import Cookies from "js-cookie";
-// import { setAccessToken , checkMyInfo } from "./modules/auth";
-import { setAccessToken  } from "./modules/auth";
-// import client from "./lib/client";
+import Cookies from "js-cookie";
+import { checkMyInfo, setAccessToken  } from "./modules/auth";
+import client from '@libs/client';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -23,13 +22,14 @@ const store = createStore(
 
 function loadUser() {
   try {
-    const token = localStorage.getItem("token");
+    const token = Cookies.get("accessToken");
     if (!token) return;
     
     store.dispatch(setAccessToken(token));
 
+    client.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-    // store.dispatch(checkMyInfo());
+    store.dispatch(checkMyInfo());
   } catch (e) {
     console.log(e);
   }

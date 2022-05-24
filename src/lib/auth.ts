@@ -1,10 +1,10 @@
 // import axios from "axios";
 
-import axios from "./client";
+import client from "./client";
 // {id , title ,body}
 
 export const signIn = async (userId : string , password : string) => {
-  const response = await axios({
+  const response = await client({
     url: "/user/login",
     method: "post",
     data: {
@@ -17,7 +17,7 @@ export const signIn = async (userId : string , password : string) => {
 };
 
 export const getMyInfo = async () => {
-  const response = await axios.get("/user/token");
+  const response = await client.get('/user/token');
   return response;
 };
 

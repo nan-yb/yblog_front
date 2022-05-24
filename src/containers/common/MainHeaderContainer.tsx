@@ -5,6 +5,8 @@ import { MyInfo } from "../../App";
 import { RootState } from "../../modules";
 import { setAccessToken, setMyInfo } from "../../modules/auth";
 import { setLoginModalDirectLogin } from "../../modules/modal";
+import client from "@libs/client";
+import Cookies from "js-cookie";
 
 interface Props {
   readonly isAuthorized: boolean;
@@ -20,6 +22,11 @@ const MainHeaderContainer = ({ isAuthorized, myInfo }: Props) => {
   }
   
   const onLogout = () => {
+    alert('로그아웃 합니다.');
+    
+    delete client.defaults.headers.common.Authorization;
+    Cookies.remove('accessToken');
+
     dispatch(setAccessToken(""));
     dispatch(setMyInfo(null));
   };

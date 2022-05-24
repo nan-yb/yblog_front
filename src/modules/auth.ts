@@ -32,9 +32,11 @@ function* loginSaga(action: ReturnType<typeof login>) {
 
     yield put(setAccessToken(authorization));
 
-    client.defaults.headers.common.Authorization = `Bearer ${authorization}`;
+    client.defaults.headers.common['Authorization'] = `Bearer ${authorization}`;
+    
+    const accessToken =  authorization;
+    Cookies.set("accessToken", accessToken, { expires: 1 });
 
-    Cookies.set("accessToken", authorization, { expires: 1 });
   } catch (e) {
     console.log(e);
   }

@@ -1,20 +1,20 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import { connect, useDispatch } from "react-redux";
 import { RootState } from "../../modules";
-import { checkMyInfo, login } from "../../modules/auth";
+import {  checkMyInfo, login } from "../../modules/auth";
 import LoginModal from "@components/common/LoginModal";
 import RegisterModal from "@components/common/RegisterModal";
 import { setLoginModalClose } from "@modules/modal";
+import { ModalInfo, MyInfo } from "src/App";
 
-const ModalContainer = ({ history }: RouteComponentProps) => {
+interface Props {
+  myInfo : MyInfo | null, 
+  accessToken : string ,
+  modal : ModalInfo | null
+}
+
+const ModalContainer = ({myInfo , accessToken , modal} : Props) => {
   const dispatch = useDispatch();
-
-  const { accessToken, myInfo  , modal } = useSelector(({ auth , modal }: RootState) => ({
-    accessToken: auth.accessToken,
-    myInfo: auth.myInfo,
-    modal :  modal.modalInfo,
-  }));
 
   const onSignIn = (userId: string, password: string) => {
     try {
@@ -31,11 +31,11 @@ const ModalContainer = ({ history }: RouteComponentProps) => {
   }, [accessToken, dispatch]);
 
   useEffect(() => {
-    if (myInfo) {
+    if (myInfo && modal && modal.show) {
       alert("로그인 되었습니다.");
       dispatch(setLoginModalClose());
     }
-  }, [myInfo, history , dispatch]);
+  }, [myInfo  ,modal , dispatch]);
   
   return (
     <>
@@ -50,4 +50,10 @@ const ModalContainer = ({ history }: RouteComponentProps) => {
   );
 };
 
-export default withRouter(ModalContainer);
+export default  connect((state: RootState) => {
+  return {
+    myInfo: state.auth.myInfo,
+    accessToken : state.auth.accessToken,
+    modal : state.modal.modalInfo,
+  };
+})(ModalContainer);
