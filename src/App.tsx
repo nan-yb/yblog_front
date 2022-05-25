@@ -4,7 +4,7 @@ import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/auth/SignInPage";
 import AdminSetupPage from "./pages/member/AdminSetupPage";
 import SignUpPage from './pages/auth/SignUpPage';
-import WritePage from '@pages/WritePage';
+import BoardRegisterPage from '@pages/board/BoardRegisterPage';
 
 export interface LoginInput {
   userId: string;
@@ -58,7 +58,7 @@ function App() {
       <Route component={SignInPage} path="/signin" exact />
       <Route component={SignUpPage} path="/signup" exact />
 
-      <Route component={WritePage} path="/write" exact />
+      <Route component={BoardRegisterPage} path="/write" exact />
       <Route component={AdminSetupPage} path="/admin" exact />
 
 
