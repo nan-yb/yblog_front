@@ -19,3 +19,5 @@ export const writeCodeDetail = (groupCode: string, codeValue: string, codeName: 
 export const removeCodeDetail = (groupCode: string, codeValue: string) => client.delete(`/codedetails/${groupCode}/${codeValue}`);
 
 export const fetchGroupCodeList = () => client.get('/codes/codeGroup');
+
+export const fetchCompanyList = () => client.get("/company/list");

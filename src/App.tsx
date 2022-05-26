@@ -1,9 +1,7 @@
 import React from 'react';
 import { Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import SignInPage from "./pages/auth/SignInPage";
 import AdminSetupPage from "./pages/member/AdminSetupPage";
-import SignUpPage from './pages/auth/SignUpPage';
 import BoardRegisterPage from '@pages/board/BoardRegisterPage';
 
 export interface LoginInput {
@@ -55,9 +53,6 @@ function App() {
     <>
       <Route component={HomePage} path="/" exact />
       
-      <Route component={SignInPage} path="/signin" exact />
-      <Route component={SignUpPage} path="/signup" exact />
-
       <Route component={BoardRegisterPage} path="/write" exact />
       <Route component={AdminSetupPage} path="/admin" exact />
 
@@ -69,7 +64,7 @@ function App() {
       <Route component={CodeGroupModifyPage} path="/codegroup/edit/:groupCode" />
       <Route component={CodeGroupReadPage} path="/codegroup/read/:groupCode" />
       
-      <Route component={CodeDetailListPage} path="/codedetail" exact />
+    <Route component={CodeDetailListPage} path="/codedetail" exact />
       <Route component={CodeDetailRegisterPage} path="/codedetail/create" />
       <Route component={CodeDetailModifyPage} path="/codedetail/edit/:groupCode/:codeValue" />
       <Route component={CodeDetailReadPage} path="/codedetail/read/:groupCode/:codeValue" /> */}

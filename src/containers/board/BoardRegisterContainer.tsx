@@ -3,8 +3,13 @@ import React from 'react';
 
 
 function BoardRegisterContainer (){ 
+
+  const uploadArticle = () =>{
+    
+  }
+
   return ( 
-    <BoardRegister/>
+    <BoardRegister uploadArticle={uploadArticle} />
   ) 
 };
 
