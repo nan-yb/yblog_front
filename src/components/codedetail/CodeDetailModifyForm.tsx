@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchGroupCodeList } from "../../lib/api";
 import styles from "../../Shop.module.css";
-import { CodeDetail, CodeValue } from "../../App";
+import { CodeDetail, CodeValue } from "@models/index";
 
 interface Props {
   readonly codeDetail: CodeDetail | null;

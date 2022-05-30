@@ -3,7 +3,7 @@ import { createReducer } from "typesafe-actions";
 import { takeLatest } from "redux-saga/effects";
 import * as api from "../lib/api";
 import createRequestSaga from "../lib/createRequestSaga";
-import { CodeDetail } from "../App";
+import { CodeDetail } from "@models/index";
 
 export const FETCH_ONE = "codeDetail/FETCH_ONE";
 const FETCH_ONE_SUCCESS = "codeDetail/FETCH_ONE_SUCCESS";

@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchGroupCodeList } from "../../lib/api";
 import styles from "../../Shop.module.css";
-import { CodeValue } from "../../App";
+import { CodeValue } from "@models/index";
 
 interface Props {
   readonly onRegister: (groupCode: string, codeValue: string, codeName: string) => void;

@@ -1,6 +1,6 @@
 import { createAction } from "redux-actions";
 import { createReducer } from "typesafe-actions";
-import {  ModalInfo } from "../App";
+import {  ModalInfo } from "@models/index";
 
 const SET_LOGIN_MODAL_DIRECT_LOGIN = "modal/SET_LOGIN_MODAL_DIRECT_LOGIN";
 const SET_LOGIN_MODAL_DIRECT_REGISTER = "modal/SET_LOGIN_MODAL_DIRECT_REGISTER";

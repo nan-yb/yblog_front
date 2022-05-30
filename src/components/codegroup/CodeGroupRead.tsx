@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "../../Shop.module.css";
-import { CodeGroup } from "../../App";
+import { CodeGroup } from "@models/index";
 
 interface Props {
   readonly codeGroup: CodeGroup | null;

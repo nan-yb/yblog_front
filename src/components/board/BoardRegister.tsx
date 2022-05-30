@@ -39,8 +39,6 @@ const BoardRegister = ( {uploadArticle } : Props) => {
   const [board, setBoard] = useState("");
   const [content, setContent] = useState("");
 
-  console.log(board , content);
-
   const handleChangeTitle = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   }, []);

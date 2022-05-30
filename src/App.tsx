@@ -4,50 +4,6 @@ import HomePage from "./pages/HomePage";
 import AdminSetupPage from "./pages/member/AdminSetupPage";
 import BoardRegisterPage from '@pages/board/BoardRegisterPage';
 
-export interface LoginInput {
-  userId: string;
-  password: string;
-}
-
-export interface AuthInfo {
-  auth: string;
-}
-
-export interface MyInfo {
-  userName: string;
-  authYn: string;
-}
-
-export interface ModalInfo { 
-  show: boolean;
-  login : boolean;
-  register : boolean;
-}
-
-export interface CodeGroup {
-  groupCode: string;
-  groupName: string;
-  regDate: string;
-}
-
-export interface CodeDetailKey { 
-  groupCode : string ; 
-  codeValue : string;
-}
-
-export interface CodeDetail {
-  groupCode : string ; 
-  codeValue : string ; 
-  codeName : string ; 
-  sortSeq : number;
-  regDate : string ;
-}
-
-export interface CodeValue { 
-  label : string ; 
-  value : string ; 
-}
-
 function App() {
   return (
     <>

@@ -3,7 +3,7 @@ import { connect, useDispatch } from "react-redux";
 import { RootState } from "../../modules";
 import {  checkMyInfo, login } from "../../modules/auth";
 import { setLoginModalClose } from "@modules/modal";
-import { ModalInfo, MyInfo } from "src/App";
+import { ModalInfo, MyInfo } from "@models/index";
 import LoginModal from "@components/auth/LoginModal";
 import RegisterModal from "@components/auth/RegisterModal";
 

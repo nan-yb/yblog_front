@@ -8,7 +8,8 @@
       "@pages/*" : ["src/pages/*"],
       "@containers/*" : ["src/containers/*"],
       "@libs/*"  : ["src/lib/*"],
-      "@modules/*" : ["src/modules/*"]
+      "@modules/*" : ["src/modules/*"],
+      "@models/*" : ["src/models/*"]
     }
   }
 }

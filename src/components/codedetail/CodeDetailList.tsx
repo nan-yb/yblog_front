@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "../../Shop.module.css";
-import { CodeDetail } from "../../App";
+import { CodeDetail } from "@models/index";
 
 interface Props {
   readonly codeDetails: CodeDetail[];
