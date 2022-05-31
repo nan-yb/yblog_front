@@ -29,7 +29,7 @@ import ConfirmModal from "@components/custom/modal/ConfirmModal";
 // });
 
 interface Props {
-  readonly uploadArticle : () => void;
+  readonly uploadArticle : (title : string , thumbImageUrl : string, board : string  , content  : string  ) => void;
 }
 
 const BoardRegister = ( {uploadArticle } : Props) => {
@@ -55,6 +55,15 @@ const BoardRegister = ( {uploadArticle } : Props) => {
     setThumbImageUrl(e.target.value);
   }, []);
 
+  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) =>{
+    e.preventDefault();
+
+    uploadArticle(title , thumbImageUrl , board , content);
+    
+  }
+
+  
+
   const editorRef = useRef();
   const initialValue = ""
   
@@ -62,32 +71,34 @@ const BoardRegister = ( {uploadArticle } : Props) => {
     <>
       <div className="mx-auto max-w-6xl py-10 h-full">
         <div className="py-4">
-          <div className="md:flex md:items-center mb-6">
-            <div className="">
-              <label className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4">
-                제목
-              </label>
+          <form onSubmit={handleSubmit}>
+            <div className="md:flex md:items-center mb-6">
+              <div className="">
+                <label className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4">
+                  제목
+                </label>
+              </div>
+              <div className="md:w-2/3">
+                <input
+                  onChange={handleChangeTitle}
+                  type="text"
+                  name="title"
+                  className="p-4 w-80 h-10 rounded text-sm focus:outline-none border border-gray-200 focus:border-sky-900 "
+                  placeholder="제목을 입력해주세요."
+                  value={title}
+                />
+              </div>
             </div>
-            <div className="md:w-2/3">
-              <input
-                onChange={handleChangeTitle}
-                type="text"
-                name="title"
-                className="p-4 w-80 h-10 rounded text-sm focus:outline-none border border-gray-200 focus:border-sky-900 "
-                placeholder="제목을 입력해주세요."
-                value={title}
-              />
-            </div>
-          </div>
 
-          <input type="hidden" name="board"  onChange={handleChangeBoard} />
-          <input type="hidden" name="content" onChange={handleChangeContent} />
-          <input
-            type="hidden"
-            name="thumbImageUrl"
-            onChange={handleChangeThumbImageUrl}
-            value={thumbImageUrl}
-          />
+            <input type="hidden" name="board"  onChange={handleChangeBoard} />
+            <input type="hidden" name="content" onChange={handleChangeContent} />
+            <input
+              type="hidden"
+              name="thumbImageUrl"
+              onChange={handleChangeThumbImageUrl}
+              value={thumbImageUrl}
+              />
+          </form>
         </div>
 
         <div className="min-h-30 h-30 ">
@@ -100,14 +111,13 @@ const BoardRegister = ( {uploadArticle } : Props) => {
 
         <div className="mx-auto x-full py-10 justify-end flex">
           <CustomButton
-            // clickFn={cancleArticle}
             clickFn = {null}
             div="red"
             title="취소"
           ></CustomButton>
 
           <CustomButton
-            clickFn = {uploadArticle}
+            clickFn = {null}
             div="blue"
             title="작성"
           ></CustomButton>

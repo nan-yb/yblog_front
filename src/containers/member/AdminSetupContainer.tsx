@@ -1,6 +1,6 @@
 import React from "react";
-import AdminSetupForm from "../../components/member/AdminSetupForm";
-import * as api from "../../lib/api";
+import AdminSetupForm from "@components/member/AdminSetupForm";
+import * as api from "@libs/auth";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 
 const AdminSetupContainer = ({ history }: RouteComponentProps) => {

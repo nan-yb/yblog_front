@@ -4,18 +4,20 @@ import { takeLatest, call, put } from "redux-saga/effects";
 import * as authApi from "@libs/auth";
 import client from "../lib/client";
 import { AxiosResponse } from "axios";
-import { LoginInput, MyInfo } from "@models/index";
+import { LoginInput, MyInfo, RegisterInput } from "@models/index";
 import Cookies from "js-cookie";
 
 const SET_ACCESS_TOKEN = "auth/SET_ACCESS_TOKEN";
 
 const LOGIN = "auth/LOGIN";
+const REGISTER = 'auth/REGISTER';
 
 const SET_MY_INFO = "auth/SET_MY_INFO";
 const CHECK_MY_INFO = "auth/CHECK_MY_INFO";
 
 export const setAccessToken = createAction(SET_ACCESS_TOKEN, (accessToken: string) => accessToken);
 export const login = createAction(LOGIN, ({ userId, password }: LoginInput) => ({ userId, password }));
+export const register = createAction(REGISTER , ({ email , password , nickName , company } : RegisterInput) => ({email , password , nickName , company}));
 
 export const setMyInfo = createAction(SET_MY_INFO, (myInfo: MyInfo | null) => myInfo);
 export const checkMyInfo = createAction(CHECK_MY_INFO);
@@ -42,6 +44,19 @@ function* loginSaga(action: ReturnType<typeof login>) {
   }
 }
 
+function* registerSaga(action : ReturnType<typeof register>) {
+  try {
+    const { email , password , nickName , company } = action.payload;
+
+    const response : AxiosResponse = yield call(authApi.signUp , email , password , nickName , company);
+
+    if(!response) return null;
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* checkMyInfoSaga() {
   try {
     const response: AxiosResponse = yield call(authApi.getMyInfo);
@@ -53,6 +68,7 @@ function* checkMyInfoSaga() {
 
 export function* authSaga() {
   yield takeLatest(LOGIN, loginSaga);
+  yield takeLatest(REGISTER , registerSaga);
   yield takeLatest(CHECK_MY_INFO, checkMyInfoSaga);
 }
 

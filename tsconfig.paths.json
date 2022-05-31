@@ -9,7 +9,8 @@
       "@containers/*" : ["src/containers/*"],
       "@libs/*"  : ["src/lib/*"],
       "@modules/*" : ["src/modules/*"],
-      "@models/*" : ["src/models/*"]
+      "@models/*" : ["src/models/*"],
+      "@layout/*" : ["src/layout/*"]
     }
   }
 }

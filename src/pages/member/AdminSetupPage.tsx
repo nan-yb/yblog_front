@@ -1,12 +1,12 @@
 import React from "react";
-import AdminSetupContainer from "../../containers/member/AdminSetupContainer";
-import MainLayout from "../../layout/MainLayout";
+import AdminLayout from "../../layout/AdminLayout";
+import AdminSetupContainer from "@containers/member/AdminSetupContainer";
 
 function AdminSetupPage() {
   return (
-    <MainLayout>
+    <AdminLayout>
       <AdminSetupContainer />
-    </MainLayout>
+    </AdminLayout>
   );
 }
 

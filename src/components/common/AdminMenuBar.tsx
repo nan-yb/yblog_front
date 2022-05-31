@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "../../Shop.module.css";
 
 interface Props {
   readonly isAuthorized: boolean;
   readonly isAdmin: boolean;
 }
 
-function MenuBar({ isAuthorized, isAdmin }: Props) {
+function AdminMenuBar({ isAuthorized, isAdmin }: Props) {
   return (
-    <div className={styles.centered}>
+    <div className={""}>
       <table>
         <tbody>
           <tr>
@@ -37,4 +36,4 @@ function MenuBar({ isAuthorized, isAdmin }: Props) {
   );
 }
 
-export default MenuBar;
+export default AdminMenuBar;

@@ -11,12 +11,12 @@ export const getAuthorized = createSelector(
 
 export const isAdmin = createSelector(
   [getAuthorized, getMyInfo],
-  (isAuthorized, myInfo) =>
-    isAuthorized && !!myInfo && myInfo.authYn === "Y"
+  (isAuthorized, myInfo) => 
+    isAuthorized && !!myInfo && myInfo.authYn === "Y" 
 );
 
 export const isMember = createSelector(
   [getAuthorized, getMyInfo],
   (isAuthorized, myInfo) =>
-    isAuthorized && !!myInfo && myInfo.authYn === "N"
+    isAuthorized && !!myInfo && myInfo.authYn === "N" 
 );

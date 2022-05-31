@@ -4,6 +4,13 @@ export interface LoginInput {
   password: string;
 }
 
+export interface RegisterInput { 
+  email : string ; 
+  password : string ;   
+  nickName : string ;  
+  company : string ;
+}
+
 export interface AuthInfo {
   auth: string;
 }

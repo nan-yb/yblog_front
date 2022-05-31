@@ -1,9 +1,7 @@
 import { CodeDetailKey } from "@models/index";
 import client from "./client";
 
-export const adminSetup = (userId: string, userName: string, userPw: string) => client.post("/users/setup", { userId, userName, userPw });
 
-export const signUp = (userId : string , userName : string , userPw : string , job : string) => client.post("/users" , {userId , userName , userPw , job});
 export const fetchJobCodeList = () => client.get('/codes/job');
 
 export const fetchCodeGroup = (groupCode: string) => client.get(`/codegroups/${groupCode}`);

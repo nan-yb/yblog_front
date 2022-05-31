@@ -1,10 +1,10 @@
 import { connect,  useDispatch  } from "react-redux";
-import MainHeader from "../../components/common/MainHeader";
-import { getAuthorized } from "../../modules/selector";
+import MainHeader from "@components/common/MainHeader";
+import { getAuthorized } from "@modules/selector";
 import { MyInfo } from "@models/index";
 import { RootState } from "../../modules";
-import { setAccessToken, setMyInfo } from "../../modules/auth";
-import { setLoginModalDirectLogin } from "../../modules/modal";
+import { setAccessToken, setMyInfo } from "@modules/auth";
+import { setLoginModalDirectLogin } from "@modules/modal";
 import client from "@libs/client";
 import Cookies from "js-cookie";
 

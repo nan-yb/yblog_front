@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { connect, useDispatch } from "react-redux";
 import { RootState } from "../../modules";
-import {  checkMyInfo, login } from "../../modules/auth";
+import {  checkMyInfo, login , register } from "../../modules/auth";
 import { setLoginModalClose } from "@modules/modal";
 import { ModalInfo, MyInfo } from "@models/index";
 import LoginModal from "@components/auth/LoginModal";
@@ -25,24 +25,12 @@ const ModalContainer = ({myInfo , accessToken , modal} : Props) => {
   };
 
   const onSignUp = (email : string, password : string , nickName : string , company : string) => {
-    if (!email || !password) {
-      alert("다시 입력해주세요.!");
-      return;
+
+    try {
+      dispatch(register({email , password , nickName , company}))
+    } catch (error) {
+      console.log(error) ;
     }
-    // const data = await client({
-    //   url: "/user/create",
-    //   method: "post",
-    //   data: {
-    //     email: email,
-    //     password: password,
-    //     company: company,
-    //     nickname: nickName,
-    //   },
-    // });
-    // // 로그인 에러 캐칭
-    // if (data.data.error) {
-    //   return;
-    // }
 
     alert("회원가입 성공");
 
