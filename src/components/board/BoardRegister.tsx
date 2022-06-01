@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 
 import "@toast-ui/editor/dist/toastui-editor.css";
@@ -8,12 +8,11 @@ import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-sy
 
 import "tui-color-picker/dist/tui-color-picker.css";
 
-// import axios from "../../lib/client";
-// import { useHistory } from "react-router-dom";
 import ToastEditor from "../custom/ToastEditor";
 import HandlessUiRadioGroup from "../custom/HandlessUiRadioGroup";
 import CustomButton from "@components/custom/CustomButton";
 import ConfirmModal from "@components/custom/modal/ConfirmModal";
+import client from "@libs/client";
 
 // const S3_BUCKET = "nanyb-bucket";
 // const REGION = "ap-northeast-2";
@@ -32,11 +31,13 @@ interface Props {
   readonly uploadArticle : (title : string , thumbImageUrl : string, board : string  , content  : string  ) => void;
 }
 
-const BoardRegister = ( {uploadArticle } : Props) => {
+const BoardRegister = ( { uploadArticle } : Props) => {
+  
   const [title, setTitle] = useState("");
   const [thumbImageUrl, setThumbImageUrl] = useState("");
 
   const [board, setBoard] = useState("");
+  const [boards, setBoards] = useState([]);
   const [content, setContent] = useState("");
 
   const handleChangeTitle = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +45,8 @@ const BoardRegister = ( {uploadArticle } : Props) => {
   }, []);
 
   const handleChangeBoard = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setBoard(e.target.value);
+    const clickBoard : any  = e.target.value;
+    setBoard("clickBoard");
   }, []);
 
   const handleChangeContent = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,14 +60,87 @@ const BoardRegister = ( {uploadArticle } : Props) => {
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault();
 
+    const html = editorRef.current.getInstance().getHtml();
+
+    setContent(html);
+
+    if (!content || !title ) {
+      alert("제목 및 내용을 입력해주세요.");
+      return;
+    }
+
     uploadArticle(title , thumbImageUrl , board , content);
-    
   }
 
-  
+  const fetchBoards = async () => {
+    try {
+      // 요청 처음에 초기화
+      setBoards([]);
 
-  const editorRef = useRef();
+      const data : any = await client({
+        url: "/board/list",
+        method: "get",
+      });
+
+      setBoards(data);
+    } catch (e) {}
+  };
+
+  useEffect(() => {
+    fetchBoards();
+  }, []);
+
+
+
+  const editorRef : any = useRef();
   const initialValue = ""
+
+  // if (editorRef.current) {
+  //   editorRef.current
+  //     .getInstance()
+  //     .addHook("addImageBlobHook", (blob : any, callback : any) => {
+  //       (async () => {
+  //         let formData = new FormData();
+  //         formData.append("file", blob);
+
+  //         const data = await client({
+  //           headers: { "content-type": "multipart/formdata" },
+  //           data: formData,
+  //           url: "/upload/file",
+  //           method: "post",
+  //         });
+
+  //         // console.log(data.data);
+  //         const imageUrl = data.data.filename;
+  //         // setImageArr([...imageArr, imageUrl]);
+  //         // 처음 등록한 이미지를 thumbNailUrl로..
+  //         // Todo 처음 등록한 이미지가 아닌 썸네일 등록할 수 있는 페이지 구현 예정
+  //         if (!thumbImageUrl) {
+  //           setThumbImageUrl(imageUrl);
+  //         }
+  //         // Image 를 가져올 수 있는 URL 을 callback 메서드에 넣어주면 자동으로 이미지를 가져온다.
+  //         callback(imageUrl, "alt text");
+  //       })();
+
+  //       return false;
+  //     });
+  // }
+
+  // const cancleArticle = async () => {
+  //   if (imageArr.length !== 0) {
+  //     await axios({
+  //       url: "/upload/cancel",
+  //       method: "post",
+  //       data: {
+  //         imageArr: imageArr,
+  //       },
+  //     });
+  //   }
+
+  //   navigate("/");
+  //   // location.href = "/";
+  // };
+
   
   return (
     <>
@@ -103,7 +178,7 @@ const BoardRegister = ( {uploadArticle } : Props) => {
 
         <div className="min-h-30 h-30 ">
           <div className="overflow-auto	border-b-1 border-b-solid border-b-sky ">
-              <HandlessUiRadioGroup />
+              <HandlessUiRadioGroup data={ boards } />
           </div>
         </div>
 
@@ -117,7 +192,7 @@ const BoardRegister = ( {uploadArticle } : Props) => {
           ></CustomButton>
 
           <CustomButton
-            clickFn = {null}
+            clickFn = {uploadArticle}
             div="blue"
             title="작성"
           ></CustomButton>
@@ -133,58 +208,3 @@ const BoardRegister = ( {uploadArticle } : Props) => {
 
 
 export default BoardRegister;
-
-// {totalBoard.map((board) => (
-//   <div key={board._id} className="w-full px-4 pb-12">
-//     <div className="w-full max-w-xs">
-//       <RadioGroup value={selected} onChange={setSelected}>
-//         <RadioGroup.Label className="sr-only"></RadioGroup.Label>
-//         <div className="space-y-2">
-//           {totalBoard.map((board) => (
-//             <RadioGroup.Option
-//               key={board._id}
-//               value={board._id}
-//               className={({ active, checked }) =>
-//                 `${
-//                   active
-//                     ? "ring-2 ring-offset-2 ring-offset-sky-300 ring-white ring-opacity-60"
-//                     : ""
-//                 }
-//                   ${
-//                     checked
-//                       ? "bg-sky-900 bg-opacity-75 text-white"
-//                       : "bg-white"
-//                   }
-//                     relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex focus:outline-none`
-//               }
-//             >
-//               {({ active, checked }) => (
-//                 <>
-//                   <div className="flex items-center justify-between w-full">
-//                     <div className="flex items-center">
-//                       <div className="text-sm">
-//                         <RadioGroup.Label
-//                           as="p"
-//                           className={`font-medium  ${
-//                             checked ? "text-white" : "text-gray-900"
-//                           }`}
-//                         >
-//                           {board.title}
-//                         </RadioGroup.Label>
-//                       </div>
-//                     </div>
-//                     {checked && (
-//                       <div className="flex-shrink-0 text-white">
-//                         <CheckIcon className="w-6 h-6" />
-//                       </div>
-//                     )}
-//                   </div>
-//                 </>
-//               )}
-//             </RadioGroup.Option>
-//           ))}
-//         </div>
-//       </RadioGroup>
-//     </div>
-//   </div>
-// ))}
