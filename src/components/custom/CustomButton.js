@@ -9,13 +9,17 @@ const RedButton = tw.button`
   flex text-red-900 hover:text-white border border-red-900 hover:bg-red-900 focus:ring-4 focus:ring-red-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 mb-3 dark:border-red-900 dark:text-red-900 dark:hover:text-white dark:hover:bg-red-900 dark:focus:ring-red-900
 `;
 
-function CustomButton({ title, div, clickFn }) {
+function CustomButton({ title, div, clickFn, type }) {
   return (
     <div>
       {div === "red" ? (
-        <RedButton onClick={clickFn}>{title}</RedButton>
+        <RedButton onClick={clickFn} type={type}>
+          {title}
+        </RedButton>
       ) : (
-        <BlueButton onClick={clickFn}>{title}</BlueButton>
+        <BlueButton onClick={clickFn} type={type}>
+          {title}
+        </BlueButton>
       )}
     </div>
   );

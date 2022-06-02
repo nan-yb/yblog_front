@@ -33,25 +33,20 @@ interface Props {
 
 const BoardRegister = ( { uploadArticle } : Props) => {
   
+  const editorRef : any = useRef();
+  const initialValue = ""
+
   const [title, setTitle] = useState("");
   const [thumbImageUrl, setThumbImageUrl] = useState("");
 
-  const [board, setBoard] = useState("");
+  const [board  , setBoard] = useState("");
+
   const [boards, setBoards] = useState([]);
-  const [content, setContent] = useState("");
 
   const handleChangeTitle = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   }, []);
 
-  const handleChangeBoard = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const clickBoard : any  = e.target.value;
-    setBoard("clickBoard");
-  }, []);
-
-  const handleChangeContent = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setContent(e.target.value);
-  }, []);
 
   const handleChangeThumbImageUrl = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setThumbImageUrl(e.target.value);
@@ -59,15 +54,7 @@ const BoardRegister = ( { uploadArticle } : Props) => {
 
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault();
-
-    const html = editorRef.current.getInstance().getHtml();
-
-    setContent(html);
-
-    if (!content || !title ) {
-      alert("제목 및 내용을 입력해주세요.");
-      return;
-    }
+    const content = editorRef.current.getInstance().getHTML();
 
     uploadArticle(title , thumbImageUrl , board , content);
   }
@@ -90,10 +77,70 @@ const BoardRegister = ( { uploadArticle } : Props) => {
     fetchBoards();
   }, []);
 
+  return (
+    <>
+      <div className="mx-auto max-w-6xl py-10 h-full">
+        <form onSubmit={handleSubmit}>
+          <div className="py-4">
+            <div className="md:flex md:items-center mb-6">
+              <div className="">
+                <label className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4">
+                  제목
+                </label>
+              </div>
+              <div className="md:w-2/3">
+                <input
+                  onChange={handleChangeTitle}
+                  type="text"
+                  name="title"
+                  className="p-4 w-80 h-10 rounded text-sm focus:outline-none border border-gray-200 focus:border-sky-900 "
+                  placeholder="제목을 입력해주세요."
+                  value={title}
+                />
+              </div>
+            </div>
 
+            <input
+              type="hidden"
+              name="thumbImageUrl"
+              onChange={handleChangeThumbImageUrl}
+              value={thumbImageUrl}
+              />
+          </div>
 
-  const editorRef : any = useRef();
-  const initialValue = ""
+          <div className="min-h-30 h-30">
+            <div className="overflow-auto	border-b-1 border-b-solid border-b-sky ">
+                <HandlessUiRadioGroup datas={ boards } groupValue={board} setGroupValue={setBoard} />
+            </div>
+          </div>
+
+          <ToastEditor editorRef={editorRef} initialValue={initialValue} />
+
+          <div className="mx-auto x-full py-10 justify-end flex">
+            <CustomButton
+              clickFn = {null}
+              div="red"
+              title="취소"
+              type="button"
+            ></CustomButton>
+
+            <CustomButton
+              clickFn = {null}
+              div="blue"
+              title="작성"
+              type="submit"
+            ></CustomButton>
+          </div>
+          
+          <ConfirmModal show={false} title={"글을 작성하시겠습니까?"} />
+        </form>
+      </div>
+    </>
+  );
+};
+
+export default BoardRegister;
+
 
   // if (editorRef.current) {
   //   editorRef.current
@@ -142,69 +189,3 @@ const BoardRegister = ( { uploadArticle } : Props) => {
   // };
 
   
-  return (
-    <>
-      <div className="mx-auto max-w-6xl py-10 h-full">
-        <div className="py-4">
-          <form onSubmit={handleSubmit}>
-            <div className="md:flex md:items-center mb-6">
-              <div className="">
-                <label className="block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4">
-                  제목
-                </label>
-              </div>
-              <div className="md:w-2/3">
-                <input
-                  onChange={handleChangeTitle}
-                  type="text"
-                  name="title"
-                  className="p-4 w-80 h-10 rounded text-sm focus:outline-none border border-gray-200 focus:border-sky-900 "
-                  placeholder="제목을 입력해주세요."
-                  value={title}
-                />
-              </div>
-            </div>
-
-            <input type="hidden" name="board"  onChange={handleChangeBoard} />
-            <input type="hidden" name="content" onChange={handleChangeContent} />
-            <input
-              type="hidden"
-              name="thumbImageUrl"
-              onChange={handleChangeThumbImageUrl}
-              value={thumbImageUrl}
-              />
-          </form>
-        </div>
-
-        <div className="min-h-30 h-30 ">
-          <div className="overflow-auto	border-b-1 border-b-solid border-b-sky ">
-              <HandlessUiRadioGroup data={ boards } />
-          </div>
-        </div>
-
-        <ToastEditor editorRef={editorRef} initialValue={initialValue} />
-
-        <div className="mx-auto x-full py-10 justify-end flex">
-          <CustomButton
-            clickFn = {null}
-            div="red"
-            title="취소"
-          ></CustomButton>
-
-          <CustomButton
-            clickFn = {uploadArticle}
-            div="blue"
-            title="작성"
-          ></CustomButton>
-        </div>
-        
-        <ConfirmModal show={false} title={"글을 작성하시겠습니까?"} />
-      </div>
-
-    </>
-  );
-};
-
-
-
-export default BoardRegister;

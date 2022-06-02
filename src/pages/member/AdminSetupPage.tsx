@@ -1,4 +1,3 @@
-import React from "react";
 import AdminLayout from "../../layout/AdminLayout";
 import AdminSetupContainer from "@containers/member/AdminSetupContainer";
 
