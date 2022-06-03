@@ -1,16 +1,16 @@
-import BoardReadContainer from '@containers/board/BoardReadContainer';
+import ArticleReadContainer from '@containers/article/ArticleReadContainer';
 import MainLayout from '@layout/MainLayout';
 import { useParams } from 'react-router-dom';
 
-function BoardReadPage (){ 
+function ArticleReadPage (){ 
 
   const { id } : {id  : string } = useParams();
 
   return (
     <MainLayout>
-      <BoardReadContainer id={id} />
+      <ArticleReadContainer id={id} />
     </MainLayout>
   );
 };
 
-export default BoardReadPage;
+export default ArticleReadPage;

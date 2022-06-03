@@ -1,18 +1,18 @@
-import BoardModifyContainer from '@containers/board/BoardModifyContainer';
+import ArticleModifyContainer from '@containers/article/ArticleModifyContainer';
 import MainLayout from '@layout/MainLayout';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
 
-function BoardModifyPage (){ 
+function ArticleModifyPage (){ 
 
   const { id } : {id  : string } = useParams();
 
   return ( 
     <MainLayout>
-      <BoardModifyContainer id = {id} />
+      <ArticleModifyContainer id = {id} />
     </MainLayout>
   ) 
 };
 
-export default BoardModifyPage;
+export default ArticleModifyPage;

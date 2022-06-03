@@ -31,7 +31,7 @@ interface Props {
   readonly uploadArticle : (title : string , thumbImageUrl : string, board : string  , content  : string  ) => void;
 }
 
-const BoardRegister = ( { uploadArticle } : Props) => {
+const ArticleRegister = ( { uploadArticle } : Props) => {
   
   const editorRef : any = useRef();
   const initialValue = ""
@@ -139,7 +139,7 @@ const BoardRegister = ( { uploadArticle } : Props) => {
   );
 };
 
-export default BoardRegister;
+export default ArticleRegister;
 
 
   // if (editorRef.current) {

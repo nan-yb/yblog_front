@@ -1,10 +1,9 @@
 import React from 'react';
 
-
-function BoardModify (){ 
+function ArticleModify (){ 
   return ( 
     <div></div>
   ) 
 };
 
-export default BoardModify;
+export default ArticleModify;

@@ -1,9 +1,9 @@
-import BoardRegister from '@components/board/BoardRegister';
+import ArticleRegister from '@components/article/ArticleRegister';
 import client from '@libs/client';
 import { useHistory } from 'react-router-dom';
 
 
-function BoardRegisterContainer (){ 
+function ArticleRegisterContainer (){ 
 
   let history = useHistory();
 
@@ -34,9 +34,9 @@ function BoardRegisterContainer (){
   }
 
   return ( 
-    <BoardRegister uploadArticle={uploadArticle} />
+    <ArticleRegister uploadArticle={uploadArticle} />
   ) 
 };
 
-export default BoardRegisterContainer;
+export default ArticleRegisterContainer;
 

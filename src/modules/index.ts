@@ -8,11 +8,13 @@ import loading from "./loading";
 import codegroup, { codeGroupSaga } from "./codegroup";
 import codedetail , { CodeDetailState , codeDetailSaga } from "./codedetail";
 import modal , { ModalState } from "./modal";
+import { ArticleState } from "./article";
 
 export interface RootState {
   auth: AuthState;
   codegroup: CodeGroupState;
   codedetail : CodeDetailState;
+  article : ArticleState;
   loading: LoadingState;
   modal : ModalState;
 }
