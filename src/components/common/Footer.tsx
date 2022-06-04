@@ -1,9 +1,8 @@
 import React from "react";
-import styles from "../../Shop.module.css";
 
 function Footer() {
   return (
-    <div className={styles.align_center}>
+    <div className="text-center pt-24 pb-12">
       <p>© 2022 ALL RIGHT RESERVED</p>
     </div>
   );

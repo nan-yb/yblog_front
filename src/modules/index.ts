@@ -2,18 +2,13 @@ import { combineReducers } from "redux";
 import { all } from "redux-saga/effects";
 import auth, { authSaga } from "./auth";
 import { AuthState } from "../modules/auth";
-import { CodeGroupState } from "../modules/codegroup";
 import { LoadingState } from "../modules/loading";
 import loading from "./loading";
-import codegroup, { codeGroupSaga } from "./codegroup";
-import codedetail , { CodeDetailState , codeDetailSaga } from "./codedetail";
 import modal , { ModalState } from "./modal";
-import { ArticleState } from "./article";
+import article , { articleSaga, ArticleState } from "./article";
 
 export interface RootState {
   auth: AuthState;
-  codegroup: CodeGroupState;
-  codedetail : CodeDetailState;
   article : ArticleState;
   loading: LoadingState;
   modal : ModalState;
@@ -22,16 +17,14 @@ export interface RootState {
 const rootReducer = combineReducers({
   auth,
   loading,
-  codegroup,
-  codedetail  ,
+  article , 
   modal
 });
 
 export function* rootSaga() {
   yield all([
     authSaga(),
-    codeGroupSaga(),
-    codeDetailSaga()
+    articleSaga(),
   ]);
 }
 

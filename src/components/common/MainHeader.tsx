@@ -23,7 +23,7 @@ function MainHeader({ myInfo , isAuthorized , onLogin ,  onLogout }: Props) {
           <nav>
             <div className="flex h-full items-center ">
               <Link to="/">
-                <span className="logoFont" style={fontStyle}>Yblog</span>  
+                <span  style={fontStyle}>Yblog</span>  
               </Link>
             </div>
 

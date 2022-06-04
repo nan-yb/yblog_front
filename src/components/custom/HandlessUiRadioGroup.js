@@ -7,7 +7,7 @@ function HandlessUiRadioGroup({ datas, groupValue, setGroupValue }) {
 
   return (
     <div>
-      <div className="w-full px-4 pb-12">
+      <div className="w-full pb-12">
         <div className="w-full max-w-xs">
           <RadioGroup value={groupValue} onChange={setGroupValue}>
             <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>

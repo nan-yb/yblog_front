@@ -12,17 +12,18 @@ function ArticleReadContainer ( { id } : Props ){
 
   const dispatch = useDispatch();
 
-  const { article, isLoading } = useSelector(({ article, loading }: RootState) => ({
-    article: article.article,
+  const { article , comment ,  isLoading } = useSelector(({ article , loading }: RootState) => ({
+    article: article.articleInfo ,
+    comment: article.commentInfo ,
     isLoading: loading[FETCH_ONE],
   }));
-
+  
   useEffect(() => {
     dispatch(fetchOne(id));
   }, [dispatch , id]);
-
+  
   return ( 
-    <ArticleRead article={article} isLoading={isLoading}/> 
+    <ArticleRead article={article} comment={comment} isLoading={isLoading}/> 
   ) 
 };
 

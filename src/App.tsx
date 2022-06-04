@@ -16,8 +16,6 @@ function App() {
       <Route component={ArticleModifyPage} path="/article/edit/:id" exact />
 
       <Route component={AdminSetupPage} path="/admin" exact />
-
-
     </>
   );
 }

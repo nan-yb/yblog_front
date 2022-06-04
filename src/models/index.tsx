@@ -12,7 +12,9 @@ export interface RegisterInput {
 }
 
 export interface AuthInfo {
-  auth: string;
+  authYn: string;
+  email : string ; 
+  nickname : string ; 
 }
 
 export interface MyInfo {
@@ -21,41 +23,25 @@ export interface MyInfo {
 }
 
 export interface ArticleInfo { 
-  author : string;
+  _id   : string;
   title : string;
   content : string;
-  thumbImageUrl : string; 
   viewCount : number;
-  thumbUpCount : number;
+  thumbupCount : number;
   commentCount : number;
+  board : BoardInfo | null;
+  author : AuthInfo | null;
+}
+
+export interface BoardInfo {
+  _id : string;
+  title : string;
+  slug : string; 
+  content : ArticleInfo[] | null;
 }
 
 export interface ModalInfo { 
   show: boolean;
   login : boolean;
   register : boolean;
-}
-
-export interface CodeGroup {
-  groupCode: string;
-  groupName: string;
-  regDate: string;
-}
-
-export interface CodeDetailKey { 
-  groupCode : string ; 
-  codeValue : string;
-}
-
-export interface CodeDetail {
-  groupCode : string ; 
-  codeValue : string ; 
-  codeName : string ; 
-  sortSeq : number;
-  regDate : string ;
-}
-
-export interface CodeValue { 
-  label : string ; 
-  value : string ; 
 }

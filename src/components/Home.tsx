@@ -4,7 +4,7 @@ import okinawa from '@assets/main/okinawa.png';
 function Home() {
   return (
     <div>
-      <div className="container mx-auto my-4 max-w-screen-xl">
+      <div className="container mx-auto my-4 p-4 max-w-screen-xl">
         <img
           src={okinawa}
           alt=""

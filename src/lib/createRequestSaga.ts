@@ -14,7 +14,12 @@ export default function createRequestSaga(type: string, request: any) {
     yield put(startLoading(type));
     try {
       const response: AxiosResponse  = yield call(request, action.payload);
-      yield put(callSuccess(response.data));
+      let data : any  = response;
+      
+      if(response.data){
+        data = response.data;
+      }
+      yield put(callSuccess(data));
     } catch (e) {
       yield put(callFailure(e));
     }

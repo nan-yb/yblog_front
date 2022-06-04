@@ -79,7 +79,7 @@ const ArticleRegister = ( { uploadArticle } : Props) => {
 
   return (
     <>
-      <div className="mx-auto max-w-6xl py-10 h-full">
+      <div className="mx-auto max-w-6xl py-10 h-full px-3.5">
         <form onSubmit={handleSubmit}>
           <div className="py-4">
             <div className="md:flex md:items-center mb-6">
