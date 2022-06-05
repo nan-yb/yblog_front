@@ -24,20 +24,30 @@ function ArticleListContainer() {
   return (
     <>
       <div className="mx-auto max-w-screen-xl px-4  ">
+        <div className="flex flex-wrap md:justify-between">
+            {article.map(artc => (
+              <>
+                {
+                  artc.content && artc.content.map(i => (
+                    <ArticleCard data={i} />
+                  ))
+                }
+              </>
+            ))}
+          </div>
         <HandlessUiTabs>
-          <ArticleCard data={null} />
+          <div className="flex flex-wrap md:justify-between">
+            {article.map(artc => (
+              <>
+                {
+                  artc.content && artc.content.map(i => (
+                    <ArticleCard data={i} />
+                  ))
+                }
+              </>
+            ))}
+          </div>
         </HandlessUiTabs>
-        {/* <div className="flex flex-wrap md:justify-between">
-          {article.map(artc => (
-            <>
-              {
-                artc.content && artc.content.map(i => (
-                  <ArticleCard article={i} />
-                ))
-              }
-            </>
-          ))}
-        </div> */}
       </div>
     </>
   );
