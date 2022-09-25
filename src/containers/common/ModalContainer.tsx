@@ -19,8 +19,8 @@ const ModalContainer = ({myInfo , accessToken , modal} : Props) => {
   const onSignIn = (userId: string, password: string) => {
     try {
       dispatch(login({ userId, password }));
-    } catch (e) {
-      console.log(e);
+    } catch (e : any) {
+      throw Error(e);
     }
   };
 
@@ -28,11 +28,9 @@ const ModalContainer = ({myInfo , accessToken , modal} : Props) => {
 
     try {
       dispatch(register({email , password , nickName , company}))
-    } catch (error) {
-      console.log(error) ;
+    } catch (e : any) {
+      throw Error(e);
     }
-
-    alert("회원가입 성공");
 
     dispatch(setLoginModalClose());
   }
@@ -45,7 +43,6 @@ const ModalContainer = ({myInfo , accessToken , modal} : Props) => {
 
   useEffect(() => {
     if (myInfo && modal && modal.show) {
-      alert("로그인 되었습니다.");
       dispatch(setLoginModalClose());
     }
   }, [myInfo  ,modal , dispatch]);

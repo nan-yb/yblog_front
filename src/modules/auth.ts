@@ -28,9 +28,16 @@ function* loginSaga(action: ReturnType<typeof login>) {
 
     const response: AxiosResponse = yield call(authApi.signIn, userId, password);
 
-    if(!response) return null;
+    const data = response.data;
 
-    const authorization = response.data.authorization;
+    if(data.error){
+      alert(data.msg);
+      return;
+    }else{
+      alert("로그인 성공했습니다.");
+    }
+
+    const authorization = data.authorization;
 
     yield put(setAccessToken(authorization));
 

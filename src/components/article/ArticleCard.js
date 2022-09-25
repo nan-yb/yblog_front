@@ -3,17 +3,12 @@ import noImage from "@assets/image/no-image.png";
 import { Link } from "react-router-dom";
 
 function ArticleCard({ data }) {
-  // style={{width : "calc(50% - 2rem)"}}
-
   if (!data) return null;
 
   return (
-    <div>
+    <div key={data._id}>
       <Link to={`/article/read/${data._id}`}>
-        <div
-          key={data._id}
-          className="md:max-w-xs w-full rounded overflow-hidden shadow-lg flex flex-col mx-4"
-        >
+        <div className="md:max-w-xs w-full rounded overflow-hidden shadow-lg flex flex-col mx-4">
           <div style={{ paddingTop: "52%" }} className="w-full h-48 relative">
             <img
               className="w-full h-full top-0 left-0 absolute object-contain"

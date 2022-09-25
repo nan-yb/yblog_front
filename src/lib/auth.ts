@@ -1,12 +1,13 @@
 // import axios from "axios";
 
+import { AxiosResponse } from "axios";
 import client from "./client";
 // {id , title ,body}
 
 export const adminSetup = (userId: string, userName: string, userPw: string) => client.post("/users/setup", { userId, userName, userPw });
 
 export const signIn = async (userId : string , password : string) => {
-  const response = await client({
+  const response:AxiosResponse = await client({
     url: "/user/login",
     method: "post",
     data: {

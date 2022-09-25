@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -24,11 +23,8 @@ function loadUser() {
   try {
     const token = Cookies.get("accessToken");
     if (!token) return;
-    
     store.dispatch(setAccessToken(token));
-
     client.defaults.headers.common.Authorization = `Bearer ${token}`;
-
     store.dispatch(checkMyInfo());
   } catch (e) {
     console.log(e);

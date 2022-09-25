@@ -7,8 +7,8 @@ import { useDispatch } from "react-redux";
 interface Props {
   readonly onSignIn : (userId : string , password : string) => void;
 }
-const LoginModal = ({onSignIn} : Props) => {
 
+const LoginModal = ({onSignIn} : Props) => {
   const dispatch = useDispatch();
 
   const onRegister = () => {

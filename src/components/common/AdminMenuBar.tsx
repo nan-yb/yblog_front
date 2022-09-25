@@ -14,19 +14,37 @@ function AdminMenuBar({ isAuthorized, isAdmin }: Props) {
           <tr>
             {isAuthorized && isAdmin && (
               <>
-                <td width="120"><Link to="/">홈</Link></td>
-                <td width="120"><Link to="/article/read/625e90e224d3d5b143d92f54">코드그룹관리</Link></td>
-                <td width="120"><Link to="/codedetail">코드관리</Link></td>
+                <td width="120">
+                  <Link to="/">홈</Link>
+                </td>
+                <td width="120">
+                  <Link to="/common/excel">엑셀 데이터</Link>
+                </td>
+                <td width="120">
+                  <Link to="/article/read/625e90e224d3d5b143d92f54">
+                    코드그룹관리
+                  </Link>
+                </td>
+                <td width="120">
+                  <Link to="/codedetail">코드관리</Link>
+                </td>
+                <td width="120">
+                  <Link to="/common/grid">그리드</Link>
+                </td>
               </>
             )}
             {isAuthorized && !isAdmin && (
               <>
-                <td width="120"><Link to="/">홈</Link></td>
+                <td width="120">
+                  <Link to="/">홈</Link>
+                </td>
               </>
             )}
             {!isAuthorized && (
               <>
-                <td width="120"><Link to="/">홈</Link></td>
+                <td width="120">
+                  <Link to="/">홈</Link>
+                </td>
               </>
             )}
           </tr>
