@@ -6,7 +6,7 @@ function HomePage() {
   return (
     <MainLayout>
       <Home />
-      <ArticleListContainer />
+      <ArticleListContainer/>
     </MainLayout>
   );
 }

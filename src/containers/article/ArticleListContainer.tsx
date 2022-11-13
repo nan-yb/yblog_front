@@ -1,11 +1,11 @@
-import { RootState } from '@modules/index';
-import { fetchList, FETCH_LIST } from '@modules/article';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import HandlessUiTabs from '@components/custom/HandlessUiTabs';
 import ArticleCard from '@components/article/ArticleCard.js';
+import { fetchList, FETCH_LIST } from '@modules/article';
+import { RootState } from '@modules/index';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 function ArticleListContainer() {
+  
   const dispatch = useDispatch();
   const { article, isLoading } = useSelector(({ article, loading }: RootState) => ({
     article: article.articleInfos,
@@ -24,29 +24,12 @@ function ArticleListContainer() {
       <div className="mx-auto max-w-screen-xl px-4  ">
         <div className="flex flex-wrap md:justify-between">
           { article.map( artc => (
-            <>
-              {
-                artc.content && artc.content.map( i => (
-                  <ArticleCard data={i} />
-                ))
-              }
-            </>
+            <div key={artc._id}>
+                <ArticleCard data={artc}  />
+            </div>
           ))}
         </div>
 
-        <HandlessUiTabs>
-          <div className="flex flex-wrap md:justify-between">
-            { article.map( artc => (
-              <>
-                {
-                  artc.content && artc.content.map( i => (
-                    <ArticleCard data={i} />
-                  ))
-                }
-              </>
-            ))}
-          </div>
-        </HandlessUiTabs>
       </div>
     </>
   );

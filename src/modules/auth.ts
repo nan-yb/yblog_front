@@ -26,12 +26,12 @@ function* loginSaga(action: ReturnType<typeof login>) {
   try {
     const { userId, password } = action.payload;
 
-    const response: AxiosResponse = yield call(authApi.signIn, userId, password);
+    const response: AxiosResponse<any , any> = yield call(authApi.signIn, userId, password);
 
     const data = response.data;
 
-    if(data.error){
-      alert(data.msg);
+    if(response.error){
+      alert(response.msg);
       return;
     }else{
       alert("로그인 성공했습니다.");

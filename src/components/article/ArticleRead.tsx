@@ -23,7 +23,6 @@ function ArticleRead ( { article , comment , isLoading }: Props){
 
 
   const initialValue = article.content;
-  console.log(initialValue)
 
   return ( 
     <>
@@ -31,10 +30,10 @@ function ArticleRead ( { article , comment , isLoading }: Props){
       {!isLoading && article && (
         <div className="mx-auto max-w-6xl py-24 h-full px-3.5">
           <div className="text-center">
-            <span className="text-[48px]" style={fontStyle}>{article.title}테스트입니다.</span>
+            <span className="text-[48px]" style={fontStyle}>{article.title}</span>
           </div>
-
-          <div className="px-3.5 py-24e">
+          
+          <div className="flex w-1/2 pt-24 justify-center min-h-screen">
             <ToastViewer editorRef={editorRef} initialValue={initialValue}/>
           </div>
         </div>

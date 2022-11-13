@@ -1,7 +1,6 @@
 // import axios from "axios";
 
 import axios from "./client";
-// {id , title ,body}
 
 export const getArticles = async () => {
   const response = await axios({
@@ -19,6 +18,21 @@ export const getArticleById = async (id : string) => {
 
   return response;
 };
+
+export const createArticle = async ( content : string , board : string , title : string , thumbImageUrl : string) =>{
+  const response = await axios({
+    url: "/article/create",
+    method: "post",
+    data: {
+      content: content,
+      board: board,
+      title: title,
+      thumbImageUrl: thumbImageUrl,
+    },
+  });
+
+  return response;
+}
 
 // export const updateArticle = async (id : string) => {
 //   const response = await axios({

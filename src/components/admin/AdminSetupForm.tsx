@@ -2,13 +2,13 @@ import React, { useState, useCallback } from "react";
 import styles from "../../Shop.module.css";
 
 interface Props {
-  readonly onRegister: (userId: string, userName: string, password: string) => void;
+  readonly onRegister: (userId: string, userName: string, password: string , authYn : boolean) => void;
 }
 
 function AdminSetupForm({ onRegister }: Props) {
-  const [userId, setUserId] = useState("");
+  const [email, setUserId] = useState("");
   const [password, setPassword] = useState("");
-  const [userName, setUserName] = useState("");
+  const [nickname, setUserName] = useState("");
 
   const handleChangeUserId = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setUserId(e.target.value);
@@ -26,9 +26,9 @@ function AdminSetupForm({ onRegister }: Props) {
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      onRegister(userId, userName, password);
+      onRegister(email, nickname, password , true);
     },
-    [userId, userName, password, onRegister]
+    [email, nickname, password, onRegister]
   );
 
   return (
@@ -43,7 +43,7 @@ function AdminSetupForm({ onRegister }: Props) {
               <td>
                 <input
                   type="text"
-                  value={userId}
+                  value={email}
                   onChange={handleChangeUserId}
                 />
               </td>
@@ -63,7 +63,7 @@ function AdminSetupForm({ onRegister }: Props) {
               <td>
                 <input
                   type="text" 
-                  value={userName}
+                  value={nickname}
                   onChange={handleChangeUserName}
                 />
               </td>

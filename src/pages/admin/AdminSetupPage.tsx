@@ -1,5 +1,5 @@
 import AdminLayout from "../../layout/AdminLayout";
-import AdminSetupContainer from "@containers/member/AdminSetupContainer";
+import AdminSetupContainer from "@containers/admin/AdminSetupContainer";
 
 function AdminSetupPage() {
   return (

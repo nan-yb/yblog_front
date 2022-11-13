@@ -1,12 +1,13 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import HomePage from "@pages/HomePage";
-import AdminSetupPage from "@pages/member/AdminSetupPage";
+import AdminSetupPage from "@pages/admin/AdminSetupPage";
 import ArticleRegisterPage from "@pages/article/ArticleRegisterPage";
 import ArticleReadPage from "@pages/article/ArticleReadPage";
 import ArticleModifyPage from "@pages/article/ArticleModifyPage";
 import ExcelPage from "@pages/common/ExcelPage";
 import GridPage from "@pages/common/GridPage";
+import AdminMngeBoardPage from "@pages/admin/AdminMngeBoardPage";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
       <Route component={ArticleModifyPage} path="/article/edit/:id" exact />
 
       <Route component={AdminSetupPage} path="/admin" exact />
-      <Route component={ExcelPage} path="/common/excel" exact />
-      <Route component={GridPage} path="/common/grid" exact />
+      <Route component={GridPage} path="/admin/grid" exact />
+      <Route component={AdminMngeBoardPage} path="/admin/board" exact />
+      <Route component={ExcelPage} path="/admin/excel" exact />
     </>
   );
 }
