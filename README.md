@@ -1,12 +1,3 @@
-# yblog frontend
-
-### lib
-
-- tailwind
-
-### npm
-
-- craco : 절대경로 생성
-- node-sass : scss 적용
-
-#
+[README]
+  
+[README]: https://github.com/nan-yb/yblog_backend
