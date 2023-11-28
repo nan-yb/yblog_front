@@ -30,8 +30,8 @@ function* loginSaga(action: ReturnType<typeof login>) {
 
     const data = response.data;
 
-    if(response.error){
-      alert(response.msg);
+    if(data.error){
+      alert(data.msg);
       return;
     }else{
       alert("로그인 성공했습니다.");
