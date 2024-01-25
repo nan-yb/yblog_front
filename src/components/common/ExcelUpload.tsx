@@ -52,7 +52,7 @@ function ExcelUpload (){
       </div>
 
       <div className="flex justify-center">
-        <CustomButton title="확인" div="red" clickFn="" type="button"/>
+        <CustomButton title="확인" div="red" type="button"/>
       </div>
     </div> 
   ) 

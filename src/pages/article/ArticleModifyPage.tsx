@@ -1,12 +1,15 @@
 import ArticleModifyContainer from '@containers/article/ArticleModifyContainer';
 import MainLayout from '@layout/MainLayout';
-import React from 'react';
 import { useParams } from 'react-router-dom';
+
+type ParamsType = {
+	id : string
+};
 
 
 function ArticleModifyPage (){ 
 
-  const { id } : {id  : string } = useParams();
+  const { id }  = useParams() as ParamsType;
 
   return ( 
     <MainLayout>
