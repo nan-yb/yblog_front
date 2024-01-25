@@ -1,7 +1,11 @@
 import "@styles/modal.scss";
 import CustomButton from "../CustomButton";
 
-const ConfirmModal = ({ show, title }) => {
+type props = {
+  show : boolean , 
+  title : string
+}
+const ConfirmModal = ({ show, title } : props ) => {
   return (
     <>
       {show ? (
@@ -9,8 +13,8 @@ const ConfirmModal = ({ show, title }) => {
           <div className="confirmModal">
             <div className="title">{title}</div>
             <div className="btnContainer">
-              <CustomButton title={"취소"} div={"red"} clickFn={null} />
-              <CustomButton title={"확인"} div={"blue"} clickFn={null} />
+              <CustomButton title={"취소"} div={"red"} />
+              <CustomButton title={"확인"} div={"blue"}  />
             </div>
           </div>
         </div>

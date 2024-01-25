@@ -1,17 +1,11 @@
-const colors = require("tailwindcss/colors");
-
-module.exports = {
-  purge: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  mode: "jit",
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
-    extend: {
-      colors: {
-        sky: colors.sky,
-        cyan: colors.cyan,
-      },
-      backgroundImage: {},
-    },
+    extend: {},
   },
-  variants: {},
   plugins: [],
-};
+}

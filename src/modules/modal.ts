@@ -1,14 +1,15 @@
-import { createAction } from "redux-actions";
+import { ActionFunctionAny, createAction } from "redux-actions";
 import { createReducer } from "typesafe-actions";
 import {  ModalInfo } from "@models/index";
+import { Action } from "redux";
 
 const SET_LOGIN_MODAL_DIRECT_LOGIN = "modal/SET_LOGIN_MODAL_DIRECT_LOGIN";
 const SET_LOGIN_MODAL_DIRECT_REGISTER = "modal/SET_LOGIN_MODAL_DIRECT_REGISTER";
 const SET_LOGIN_MODAL_CLOSE = "modal/SET_LOGIN_MODAL_CLOSE";
 
-export const setLoginModalDirectLogin = createAction(SET_LOGIN_MODAL_DIRECT_LOGIN);
-export const setLoginModalDirectRegister = createAction(SET_LOGIN_MODAL_DIRECT_REGISTER);
-export const setLoginModalClose = createAction(SET_LOGIN_MODAL_CLOSE);
+export const setLoginModalDirectLogin : ActionFunctionAny<Action<any>> = createAction(SET_LOGIN_MODAL_DIRECT_LOGIN);
+export const setLoginModalDirectRegister : ActionFunctionAny<Action<any>> = createAction(SET_LOGIN_MODAL_DIRECT_REGISTER);
+export const setLoginModalClose : ActionFunctionAny<Action<any>> = createAction(SET_LOGIN_MODAL_CLOSE);
 
 
 export interface ModalState {

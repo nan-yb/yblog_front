@@ -2,7 +2,7 @@ import React from "react";
 import noImage from "@assets/image/no-image.png";
 import { Link } from "react-router-dom";
 
-function ArticleCard({ data }) {
+function ArticleCard({ data  } : any) {
   if (!data) return null;
 
   return (

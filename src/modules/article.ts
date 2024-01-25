@@ -1,9 +1,11 @@
 import createRequestSaga from "@libs/createRequestSaga";
 import { ArticleInfo, BoardInfo } from "@models/index";
-import { createAction } from "redux-actions";
+import { ActionFunctionAny, createAction } from "redux-actions";
 import { takeLatest } from "redux-saga/effects";
 import { createReducer } from "typesafe-actions";
 import * as api from "../lib/article";
+import { ActionFunction } from "react-router-dom";
+import { Action } from "redux";
 
 
 export const FETCH_ONE = "article/FETCH_ONE";
@@ -15,8 +17,8 @@ const FETCH_LIST_SUCCESS = "article/FETCH_LIST_SUCCESS";
 const FETCH_LIST_FAILURE = "article/FETCH_LIST_FAILURE";
 
 
-export const fetchOne = createAction(FETCH_ONE, (id: string) => id);
-export const fetchList = createAction(FETCH_LIST);
+export const fetchOne : ActionFunctionAny<Action<any>>  = createAction(FETCH_ONE, (id: string) => id);
+export const fetchList : ActionFunctionAny<Action<any>>   = createAction(FETCH_LIST);
 
 const fetchOneSaga = createRequestSaga(FETCH_ONE, api.getArticleById);
 const fetchListSaga = createRequestSaga(FETCH_LIST, api.getArticles);

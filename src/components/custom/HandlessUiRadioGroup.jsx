@@ -1,6 +1,7 @@
 import { RadioGroup } from "@headlessui/react";
 
-function HandlessUiRadioGroup({ datas, groupValue, setGroupValue }) {
+
+function HandlessUiRadioGroup({ datas, groupValue, setGroupValue } ) {
   if (!datas) {
     return null;
   }
@@ -12,7 +13,7 @@ function HandlessUiRadioGroup({ datas, groupValue, setGroupValue }) {
           <RadioGroup value={groupValue} onChange={setGroupValue}>
             <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
             <div className="space-y-2">
-              {datas.map((data) => (
+              {datas.map((data ) => (
                 <RadioGroup.Option
                   key={data._id}
                   value={data._id}

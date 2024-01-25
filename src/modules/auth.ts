@@ -1,4 +1,4 @@
-import { createAction } from "redux-actions";
+import { ActionFunctionAny, createAction } from "redux-actions";
 import { createReducer } from "typesafe-actions";
 import { takeLatest, call, put } from "redux-saga/effects";
 import * as authApi from "@libs/auth";
@@ -6,6 +6,7 @@ import client from "../lib/client";
 import { AxiosResponse } from "axios";
 import { LoginInput, MyInfo, RegisterInput } from "@models/index";
 import Cookies from "js-cookie";
+import { Action } from "redux";
 
 const SET_ACCESS_TOKEN = "auth/SET_ACCESS_TOKEN";
 
@@ -15,12 +16,12 @@ const REGISTER = 'auth/REGISTER';
 const SET_MY_INFO = "auth/SET_MY_INFO";
 const CHECK_MY_INFO = "auth/CHECK_MY_INFO";
 
-export const setAccessToken = createAction(SET_ACCESS_TOKEN, (accessToken: string) => accessToken);
-export const login = createAction(LOGIN, ({ userId, password }: LoginInput) => ({ userId, password }));
-export const register = createAction(REGISTER , ({ email , password , nickName , company } : RegisterInput) => ({email , password , nickName , company}));
+export const setAccessToken :  ActionFunctionAny<Action<any>> = createAction(SET_ACCESS_TOKEN, (accessToken: string) => accessToken);
+export const login :  ActionFunctionAny<Action<any>> = createAction(LOGIN, ( { userId, password }: LoginInput) => ({ userId, password }));
+export const register :  ActionFunctionAny<Action<any>> = createAction(REGISTER , ({ email , password , nickName , company } : RegisterInput) => ({email , password , nickName , company}));
 
-export const setMyInfo = createAction(SET_MY_INFO, (myInfo: MyInfo | null) => myInfo);
-export const checkMyInfo = createAction(CHECK_MY_INFO);
+export const setMyInfo:  ActionFunctionAny<Action<any>> = createAction(SET_MY_INFO, (myInfo: MyInfo | null) => myInfo);
+export const checkMyInfo :  ActionFunctionAny<Action<any>>= createAction(CHECK_MY_INFO);
 
 function* loginSaga(action: ReturnType<typeof login>) {
   try {

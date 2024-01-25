@@ -1,23 +1,19 @@
-import ReactDOM from 'react-dom';
-import './index.css';
+
+import { createRoot } from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { MemoryRouter as Router } from "react-router-dom";
-import { createStore, applyMiddleware } from "redux";
+import { Route, MemoryRouter as Router, Routes } from "react-router-dom";
+import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from "react-redux";
 import rootReducer, { rootSaga } from "./modules";
-import { composeWithDevTools } from "redux-devtools-extension";
-import createSagaMiddleware from "redux-saga";
 import Cookies from "js-cookie";
-import { checkMyInfo, setAccessToken  } from "./modules/auth";
+import { checkMyInfo, setAccessToken } from "./modules/auth";
 import client from '@libs/client';
+import "./index.css"
 
-const sagaMiddleware = createSagaMiddleware();
-
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(sagaMiddleware))
-);
+const store = configureStore({
+  reducer: rootReducer,
+})
 
 function loadUser() {
   try {
@@ -31,17 +27,16 @@ function loadUser() {
   }
 }
 
-sagaMiddleware.run(rootSaga);
-
 loadUser();
 
-ReactDOM.render(
+
+const container : any = document.getElementById('root');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+
+root.render(
   <Provider store={store}>
     <Router>
       <App />
     </Router>
-  </Provider>,
-  document.getElementById("root")
+  </Provider>
 );
-
-reportWebVitals();

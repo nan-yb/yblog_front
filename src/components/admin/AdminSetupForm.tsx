@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-import styles from "../../Shop.module.css";
 
 interface Props {
   readonly onRegister: (userId: string, userName: string, password: string , authYn : boolean) => void;
@@ -32,7 +31,7 @@ function AdminSetupForm({ onRegister }: Props) {
   );
 
   return (
-    <div className={styles.centered}>
+    <div className="">
       <h2>최초관리자 등록</h2>
 
       <form onSubmit={handleSubmit}>
@@ -71,7 +70,7 @@ function AdminSetupForm({ onRegister }: Props) {
           </tbody>
         </table>
 
-        <div className={styles.align_center}>
+        <div className="">
           <button type="submit">등록</button>
         </div>
       </form>
