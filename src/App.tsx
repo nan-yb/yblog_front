@@ -12,16 +12,16 @@ import AdminMngeBoardPage from "@pages/admin/AdminMngeBoardPage";
 function App() {
   return (
     <>
-      <Route component={HomePage} path="/" exact />
+      <Route element={<HomePage/>} path="/"  />
 
-      <Route component={ArticleReadPage} path="/article/read/:id" exact />
-      <Route component={ArticleRegisterPage} path="/article/create" exact />
-      <Route component={ArticleModifyPage} path="/article/edit/:id" exact />
+      <Route element={<ArticleReadPage/>} path="/article/read/:id"  />
+      <Route element={<ArticleRegisterPage/>} path="/article/create"  />
+      <Route element={<ArticleModifyPage/>} path="/article/edit/:id"  />
 
-      <Route component={AdminSetupPage} path="/admin" exact />
-      <Route component={GridPage} path="/admin/grid" exact />
-      <Route component={AdminMngeBoardPage} path="/admin/board" exact />
-      <Route component={ExcelPage} path="/admin/excel" exact />
+      <Route element={<AdminSetupPage/>} path="/admin"  />
+      <Route element={<GridPage/>} path="/admin/grid"  />
+      <Route element={<AdminMngeBoardPage/>} path="/admin/board"  />
+      <Route element={<ExcelPage/>} path="/admin/excel"  />
     </>
   );
 }

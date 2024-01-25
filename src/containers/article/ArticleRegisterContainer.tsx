@@ -1,11 +1,11 @@
 import ArticleRegister from '@components/article/ArticleRegister';
 import { createArticle } from '@libs/article';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function ArticleRegisterContainer (){ 
 
-  let history = useHistory();
+  const navigate = useNavigate();
 
   
   const uploadArticle =  async (title : string , thumbImageUrl : string, board : string  , content  : string) =>{
@@ -22,7 +22,7 @@ function ArticleRegisterContainer (){
     }
 
     data.then( (resp : any) => {
-      history.push(`/article/read/${resp._id}`);
+      navigate(`/article/read/${resp._id}`)
     })
   }
 
