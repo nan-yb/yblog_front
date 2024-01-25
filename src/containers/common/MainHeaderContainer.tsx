@@ -1,7 +1,7 @@
 import { connect,  useDispatch  } from "react-redux";
 import MainHeader from "@components/common/MainHeader";
 import { getAuthorized } from "@modules/selector";
-import { MyInfo } from "@types/index";
+import { MyInfo } from "@type/index";
 import { RootState } from "../../modules";
 import { setAccessToken, setMyInfo } from "@modules/auth";
 import { setLoginModalDirectLogin } from "@modules/modal";

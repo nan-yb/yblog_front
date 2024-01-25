@@ -1,5 +1,5 @@
 import createRequestSaga from "@libs/createRequestSaga";
-import { ArticleInfo, BoardInfo } from "@types/index";
+import { ArticleInfo, BoardInfo } from "@type/index";
 import { ActionFunctionAny, createAction } from "redux-actions";
 import { takeLatest } from "redux-saga/effects";
 import { createReducer } from "typesafe-actions";

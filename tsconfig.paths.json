@@ -9,7 +9,7 @@
       "@containers/*" : ["src/containers/*"],
       "@libs/*"  : ["src/lib/*"],
       "@modules/*" : ["src/modules/*"],
-      "@types/*" : ["src/types/*"],
+      "@type/*" : ["src/type/*"],
       "@layout/*" : ["src/layout/*"]
     }
   }

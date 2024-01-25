@@ -1,4 +1,3 @@
-
 export interface LoginInput {
   userId: string;
   password: string;
