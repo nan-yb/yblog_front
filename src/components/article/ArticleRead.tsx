@@ -1,7 +1,7 @@
 import ToastViewer from '@components/custom/ToastViewer';
 import React, { useRef } from 'react';
 import "@styles/board.scss"
-import { ArticleInfo } from '@models/index';
+import { ArticleInfo } from '@types/index';
 
 interface Props {
   readonly article : ArticleInfo | null;

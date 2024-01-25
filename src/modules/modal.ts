@@ -1,6 +1,6 @@
 import { ActionFunctionAny, createAction } from "redux-actions";
 import { createReducer } from "typesafe-actions";
-import {  ModalInfo } from "@models/index";
+import {  ModalInfo } from "@types/index";
 import { Action } from "redux";
 
 const SET_LOGIN_MODAL_DIRECT_LOGIN = "modal/SET_LOGIN_MODAL_DIRECT_LOGIN";

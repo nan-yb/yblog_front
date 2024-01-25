@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MyInfo } from "@models/index";
+import { MyInfo } from "@types/index";
 import "@styles/gnb.scss"
 
 interface Props {

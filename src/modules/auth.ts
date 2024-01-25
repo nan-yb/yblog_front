@@ -4,7 +4,7 @@ import { takeLatest, call, put } from "redux-saga/effects";
 import * as authApi from "@libs/auth";
 import client from "../lib/client";
 import { AxiosResponse } from "axios";
-import { LoginInput, MyInfo, RegisterInput } from "@models/index";
+import { LoginInput, MyInfo, RegisterInput } from "@types/index";
 import Cookies from "js-cookie";
 import { Action } from "redux";
 
