@@ -42,4 +42,3 @@ export const getMyInfo = async () => {
   const response = await client.get('/user/token');
   return response;
 };
-

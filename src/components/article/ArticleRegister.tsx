@@ -118,14 +118,12 @@ const ArticleRegister = ( { uploadArticle } : Props) => {
 
           <div className="mx-auto x-full py-10 justify-end flex">
             <CustomButton
-              clickFn = {null}
               div="red"
               title="취소"
               type="button"
             ></CustomButton>
 
             <CustomButton
-              clickFn = {null}
               div="blue"
               title="작성"
               type="submit"
